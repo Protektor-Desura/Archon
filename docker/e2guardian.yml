@@ -1,0 +1,41 @@
+version: "3.3"
+services:
+  e2guardian:
+    container_name: e2guardian
+    environment:
+      - dns=1.1.1.1
+      - dns=1.0.0.1
+      - dns=37.235.1.174
+      - dns=37.235.1.177
+      - dns=84.200.69.80
+      - dns=84.200.70.40
+      - dns=209.222.18.218
+      - dns=209.222.18.222
+      - E2G_MITM=on
+      - FILEBROWSER=on
+      - FILEBROWSER_PORT=85
+      - FILEBROWSER_ROOT=/config
+      - FILEBROWSER_DB=/config/filebrowser/database.db
+      - FILEBROWSER_LOG=/app/log/filebrowser.log
+      - PGID=1000
+      - PUID=1000
+      - NWEB=on
+      - NWEB_PORT=8999
+      - TZ=America/Chicago
+    hostname: e2guardian
+    image: "beechfuzz/e2guardian:latest"
+    networks:
+      - archon
+    ports:
+      - "85:85/tcp"
+      - "8082:8080/tcp"
+      - "8999:8999/tcp"
+    restart: always
+    volumes:
+      - "/home/archon/e2guardian:/config:rw"
+      - "/home/archon/e2guardian/log:/app/log:rw"
+    
+    
+networks:
+  archon:
+    external: true
