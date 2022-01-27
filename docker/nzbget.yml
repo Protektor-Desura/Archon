@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+  nzbget:
+    container_name: nzbget
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: nzbget
+    image: "ghcr.io/linuxserver/nzbget:latest"
+    networks:
+      - archon
+    ports:
+      - "6789:6789/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/docker/nzbget:/config:rw"
+      - "/srv/media/downloads:/downloads:rw"
+
+
+networks:
+  archon:
+    external: true
