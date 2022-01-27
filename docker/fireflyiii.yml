@@ -1,0 +1,130 @@
+version: '3.3'
+services:
+  app:
+    image: fireflyiii/core:latest
+    restart: always
+    environment:
+      - APP_KEY=SomeRandomStringOf32CharsExactly
+      - APP_DEBUG=false
+      - SITE_OWNER=mail@example.com
+      - DEFAULT_LANGUAGE=en_US
+      - DEFAULT_LOCALE=equal
+      - TZ=America/Chicago
+      - TRUSTED_PROXIES=
+      - LOG_CHANNEL=stack
+      - PAPERTRAIL_HOST=
+      - PAPERTRAIL_PORT=
+      - APP_LOG_LEVEL=notice
+      - AUDIT_LOG_LEVEL=info
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=firefly
+      - DB_USERNAME=firefly
+      - DB_PASSWORD=secret_firefly_password
+      - MYSQL_USE_SSL=false
+      - MYSQL_SSL_VERIFY_SERVER_CERT=true
+      - MYSQL_SSL_CAPATH=/etc/ssl/certs/
+      - MYSQL_SSL_CA=
+      - MYSQL_SSL_CERT=
+      - MYSQL_SSL_KEY=
+      - MYSQL_SSL_CIPHER=
+      - PGSQL_SSL_MODE=prefer
+      - PGSQL_SSL_ROOT_CERT=null
+      - PGSQL_SSL_CERT=null
+      - PGSQL_SSL_KEY=null
+      - PGSQL_SSL_CRL_FILE=null
+      - CACHE_DRIVER=file
+      - SESSION_DRIVER=file
+      - REDIS_SCHEME=tcp
+      - REDIS_PATH=
+      - REDIS_HOST=127.0.0.1
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=null
+      - REDIS_DB="0"
+      - REDIS_CACHE_DB="1"
+      - COOKIE_PATH="/"
+      - COOKIE_DOMAIN=
+      - COOKIE_SECURE=false
+      - COOKIE_SAMESITE=lax
+      - MAIL_MAILER=log
+      - MAIL_HOST=null
+      - MAIL_PORT=2525
+      - MAIL_FROM=changeme@example.com
+      - MAIL_USERNAME=null
+      - MAIL_PASSWORD=null
+      - MAIL_ENCRYPTION=null
+      - MAILGUN_DOMAIN=
+      - MAILGUN_SECRET=
+      - MAILGUN_ENDPOINT=api.mailgun.net
+      - MANDRILL_SECRET=
+      - SPARKPOST_SECRET=
+      - SEND_REGISTRATION_MAIL=true
+      - SEND_ERROR_MESSAGE=true
+      - SEND_LOGIN_NEW_IP_WARNING=true
+      - SEND_REPORT_JOURNALS=true
+      - ENABLE_EXTERNAL_MAP=false
+      - MAP_DEFAULT_LAT=51.983333
+      - MAP_DEFAULT_LONG=5.916667
+      - MAP_DEFAULT_ZOOM=6
+      - AUTHENTICATION_GUARD=web
+      - LDAP_DIALECT=OpenLDAP
+      - LDAP_HOST=ldap.yourserver.com
+      - LDAP_PORT=389
+      - LDAP_TIMEOUT=5
+      - LDAP_SSL=false
+      - LDAP_TLS=false
+      - LDAP_BASE_DN="o=something,dc=site,dc=com"
+      - LDAP_USERNAME="uid=X,ou=,o=,dc=something,dc=com"
+      - LDAP_PASSWORD=super_secret
+      - LDAP_AUTH_FIELD=uid
+      - LDAP_EXTRA_FILTER=
+      - AUTHENTICATION_GUARD_HEADER=REMOTE_USER
+      - AUTHENTICATION_GUARD_EMAIL=
+      - CUSTOM_LOGOUT_URL=
+      - DISABLE_FRAME_HEADER=false
+      - DISABLE_CSP_HEADER=false
+      - TRACKER_SITE_ID=
+      - TRACKER_URL=
+      - ALLOW_WEBHOOKS=false
+      - STATIC_CRON_TOKEN=
+      - DKR_CHECK_SQLITE=true
+      - DKR_RUN_MIGRATION=true
+      - DKR_RUN_UPGRADE=true
+      - DKR_RUN_VERIFY=true
+      - DKR_RUN_REPORT=true
+      - DKR_RUN_PASSPORT_INSTALL=true
+      - APP_NAME=FireflyIII
+      - ADLDAP_CONNECTION=default
+      - BROADCAST_DRIVER=log
+      - QUEUE_DRIVER=sync
+      - CACHE_PREFIX=firefly
+      - PUSHER_KEY=
+      - IPINFO_TOKEN=
+      - PUSHER_SECRET=
+      - PUSHER_ID=
+      - DEMO_USERNAME=
+      - DEMO_PASSWORD=
+      - IS_HEROKU=false
+      - FIREFLY_III_LAYOUT=v1
+      - APP_URL=http://localhost
+    volumes:
+      - /home/archon/fireflyiii/firefly_iii_upload:/var/www/html/storage/upload
+    ports:
+      - 8685:8080
+    depends_on:
+      - db
+  db:
+    image: mariadb    
+    hostname: fireflyiiidb
+    restart: always
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=firefly
+      - MYSQL_PASSWORD=secret_firefly_password
+      - MYSQL_DATABASE=firefly
+    volumes:
+      - /home/archon/fireflyiii/firefly_iii_db:/var/lib/mysql
+volumes:
+   firefly_iii_upload:
+   firefly_iii_db:
