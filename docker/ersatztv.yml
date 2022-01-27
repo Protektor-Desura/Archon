@@ -17,7 +17,6 @@ services:
       - "/home/docker/ersatztv:/root/.local/share/ersatztv"
       - "/srv/media/libraries:/libraries:ro"
 
-
 networks:
   archon:
     external: true
