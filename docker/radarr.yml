@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  radarr:
+    container_name: radarr
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - SMA_UPDATE=true
+      - TZ=America/Chicago
+    hostname: radarr
+    image: "randomninjaatk/radarr-sma:nightly"
+    networks:
+      - archon
+    ports:
+      - "7878:7878/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/radarr:/config"
+      - "/srv/media/downloads:/downloads"
+      - "/srv/media/libraries:/libraries"
+
+
+networks:
+  archon:
+    external: true
