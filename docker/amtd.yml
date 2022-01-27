@@ -29,7 +29,6 @@ services:
       - "/home/archon/amtd:/config"
       - "/srv/media/libraries:/libraries"
 
-
 networks:
   archon:
     external: true
