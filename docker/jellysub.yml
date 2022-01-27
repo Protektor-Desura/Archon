@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  jellyfin_subsonic:
+    container_name: jellyfin_subsonic
+    environment:
+      - JELLYSUB_UPSTREAM_URL=http://jellyfin:8096
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: jellyfin_subsonic
+    image: "nvllsvm/jellysub:latest"
+    networks:
+      - archon
+    ports:
+      - "4040:4040/tcp"
+    restart: unless-stopped
+
+
+networks:
+  archon:
+    external: true
