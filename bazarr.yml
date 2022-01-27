@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+  bazarr:
+    container_name: bazarr
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: bazarr
+    image: "sekkr1/bazarr-subsync:latest"
+    networks:
+      - archon
+    ports:
+      - "6767:6767/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/bazarr:/config"
+      - "/srv/media/libraries:/libraries"
+
+
+networks:
+  archon:
+    external: true
