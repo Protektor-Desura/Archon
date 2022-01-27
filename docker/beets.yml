@@ -14,7 +14,7 @@ services:
       - "8337:8337/tcp"
     restart: unless-stopped
     volumes:
-      - "/home/docker/beets:/config"
+      - "/home/archon/beets:/config"
       - "/srv/media/downloads:/downloads"
       - "/srv/media/libraries/music:/music"
     
