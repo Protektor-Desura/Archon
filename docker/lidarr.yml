@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  lidarr:
+    container_name: lidarr
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: lidarr
+    image: "ghcr.io/linuxserver/lidarr:latest"
+    networks:
+      - archon
+    ports:
+      - "8686:8686/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/lidarr:/config"
+      - "/srv/media/libraries:/libraries"
+      - "/srv/media/downloads:/downloads"
+      - "/srv/media/downloads:/downloads-amd"
+
+
+networks:
+  archon:
+    external: true
