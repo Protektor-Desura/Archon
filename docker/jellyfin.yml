@@ -5,7 +5,7 @@ services:
     devices:
       - "/dev/dri:/dev/dri" #vaapi
     environment:
-      - JELLYFIN_PublishedServerUrl=http://192.168.100.5:8096 #server announce address
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl} #server announce address
       - PGID=1000
       - PUID=1000
       - TZ=America/Chicago
