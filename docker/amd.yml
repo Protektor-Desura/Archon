@@ -35,6 +35,7 @@ services:
     volumes:
       - "/home/archon/amd:/config"
       - "/srv/media/downloads:/downloads-amd"
+
 networks:
   archon:
     external: true
