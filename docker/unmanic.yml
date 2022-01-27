@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  unmanic:
+    container_name: unmanic
+    devices:
+      - "/dev/dri:/dev/dri" #vaapi
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: unmanic
+    image: "josh5/unmanic:latest"
+    networks:
+      - archon
+    ports:
+      - "8888:8888"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/unmanic:/config"
+      - "/home/archon/unmanic/cache:/tmp/unmanic"
+      - "/srv/media/libraries:/library"
+
+networks:
+  archon:
+    external: true
