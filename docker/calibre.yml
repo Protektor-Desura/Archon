@@ -19,7 +19,6 @@ services:
       - "/srv/media/downloads/books:/downloads:rw"
       - "/srv/media/libraries/books:/books:rw"
 
-
 networks:
   archon:
     external: true
