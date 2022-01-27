@@ -32,9 +32,8 @@ services:
       - "8999:8999/tcp"
     restart: always
     volumes:
-      - "/home/archon/e2guardian:/config:rw"
-      - "/home/archon/e2guardian/log:/app/log:rw"
-    
+      - "/home/archon/e2guardian:/config:"
+      - "/home/archon/e2guardian/log:/app/log"    
     
 networks:
   archon:
