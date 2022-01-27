@@ -1,0 +1,20 @@
+version: "2.1"
+services:
+  ddclient:
+    container_name: ddclient
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: ddclient      
+    image: "ghcr.io/linuxserver/ddclient:latest"
+    networks:
+      - archon
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/ddclient:/config:rw"
+
+
+networks:
+  archon:
+    external: true
