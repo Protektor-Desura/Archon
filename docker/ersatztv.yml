@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+  ersatztv:
+    container_name: ersatztv
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: ersatztv
+    image: "jasongdove/ersatztv:latest"
+    networks:
+      - archon
+    ports:
+      - "8409:8409/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/docker/ersatztv:/root/.local/share/ersatztv"
+      - "/srv/media/libraries:/libraries:ro"
+
+
+networks:
+  archon:
+    external: true
