@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+  podgrab:
+    container_name: podgrab
+    environment:
+      - CHECK_FREQUENCY=120
+      - PASSWORD=password     # username: podgrab
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: podgrab
+    image: "akhilrex/podgrab:latest"
+    networks:
+      - archon
+    ports:
+      - "3031:8080/tcp"
+    restart: unless-stopped
+    user: "1000:1000"
+    volumes:
+      - "/home/docker/podgrab:/config:rw"
+      - "/srv/media/libraries/podcasts:/assets:rw"
+
+
+networks:
+  archon:
+    external: true
