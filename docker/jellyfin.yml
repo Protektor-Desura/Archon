@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  jellyfin:
+    container_name: jellyfin
+    devices:
+      - "/dev/dri:/dev/dri" #vaapi
+    environment:
+      - JELLYFIN_PublishedServerUrl=http://192.168.100.5:8096 #server announce address
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: jellyfin
+    image: "ghcr.io/linuxserver/jellyfin:latest"
+    networks:
+      - archon
+    ports:
+      - "1900:1900/udp" #dlna
+      - "7359:7359/udp" #server announce
+      - "8096:8096/tcp" #http
+      - "8920:8920/tcp" #https
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/jellyfin:/config"
+      - "/srv/media/libraries:/media"
+
+networks:
+  archon:
+    external: true
