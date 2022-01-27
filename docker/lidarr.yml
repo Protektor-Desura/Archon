@@ -19,7 +19,6 @@ services:
       - "/srv/media/downloads:/downloads"
       - "/srv/media/downloads:/downloads-amd"
 
-
 networks:
   archon:
     external: true
