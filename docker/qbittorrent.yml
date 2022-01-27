@@ -13,3 +13,5 @@ services:
     volumes:
       - "/home/archon/qbittorrent:/config"
       - "/srv/media/downloads:/downloads"
+
+# username/password is admin/adminadmin
