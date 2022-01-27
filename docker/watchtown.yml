@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  watchtower:
+    command: --cleanup --rolling-restart --include-stopped
+    container_name: watchtower
+    environment:
+      - TZ=America/Chicago
+    hostname: watchtower
+    image: containrrr/watchtower:latest
+    networks:
+      - archon
+    restart: unless-stopped
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+
+networks:
+  archon:
+    external: true
