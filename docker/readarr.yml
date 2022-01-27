@@ -18,7 +18,6 @@ services:
       - "/srv/media/downloads:/downloads"
       - "/srv/media/libraries/books:/books"
 
-
 networks:
   archon:
     external: true
