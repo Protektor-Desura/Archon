@@ -1,0 +1,37 @@
+version: "3.3"
+services:
+  amvd:
+    container_name: amvd
+    environment:
+      - AUTOSTART=true
+      - CountryCode=us
+      - FilePermissions=644
+      - FolderPermissions=755
+      - LidarrAPIkey=*****
+      - LidarrUrl=http://lidarr:8686
+      - MBRAINZMIRROR=https://musicbrainz.org
+      - MBRATELIMIT=1
+      - PGID=1000
+      - PUID=1000
+      - RequireVideoMatch=true
+      - SCRIPTINTERVAL=1h
+      - SOURCE_CONNECTION=lidarr
+      - subtitlelanguage=en
+      - TZ=America/Chicago
+      - USEFOLDERS=true
+      - USEVIDEOFOLDERS=true
+      - videofilter=live
+      - WriteNFOs=true
+    hostname: amd
+    image: "randomninjaatk/amvd:latest"
+    networks:
+      - archon
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/amvd:/config"
+      - "/srv/media/libraries/music-videos:/downloads-amvd"
+
+
+networks:
+  archon:
+    external: true
