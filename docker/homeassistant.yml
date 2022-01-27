@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  homeassistant:
+    container_name: homeassistant
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: homeassistant
+    image: "ghcr.io/linuxserver/homeassistant:latest"
+    ports:
+      - "8123:8123/tcp"
+    networks:
+      - archon
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/homeassistant:/config:rw"
+
+
+networks:
+  archon:
+    external: true
