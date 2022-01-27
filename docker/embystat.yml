@@ -16,7 +16,6 @@ services:
     volumes:
       - "/home/archon/embystat:/config"
 
-
 networks:
   archon:
     external: true
