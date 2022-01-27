@@ -14,8 +14,7 @@ services:
       - archon
     restart: unless-stopped
     volumes:
-      - "/home/archon/homeassistant:/config:rw"
-
+      - "/home/archon/homeassistant:/config"
 
 networks:
   archon:
