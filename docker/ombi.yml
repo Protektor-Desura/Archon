@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  ombi:
+    container_name: ombi
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: ombi
+    image: "ghcr.io/linuxserver/ombi:latest"
+    networks:
+      - archon
+    ports:
+      - "3579:3579/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/docker/ombi:/config:rw"
+
+
+networks:
+  archon:
+    external: true
