@@ -17,7 +17,6 @@ services:
       - "/home/archon/bazarr:/config"
       - "/srv/media/libraries:/libraries"
 
-
 networks:
   archon:
     external: true
