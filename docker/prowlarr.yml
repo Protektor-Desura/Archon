@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+  prowlarr:
+    container_name: prowlarr
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: prowlarr
+    image: "ghcr.io/linuxserver/prowlarr:develop"
+    networks:
+      - archon
+    ports:
+      - "9696:9696/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/prowlarr:/config"
+
+
+  flaresolverr:
+    container_name: flaresolverr
+    depends_on:
+      - prowlarr
+    environment:
+      - LOG_LEVEL=info
+      - LOG_HTML=false
+      - CAPTCHA_SOLVER=none
+      - TZ=America/Chicago
+    hostname: flaresolverr
+    image: "ghcr.io/flaresolverr/flaresolverr:latest"
+    networks:
+      - archon
+    ports:
+      - "8191:8191"
+    restart: unless-stopped 
+
+
+networks:
+  archon:
+    external: true
