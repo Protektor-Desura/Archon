@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  calibre:
+    container_name: calibre
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: calibre
+    image: "ghcr.io/linuxserver/calibre:latest"
+    networks:
+      - archon
+    ports:
+      - "8080:8080/tcp"
+      - "8081:8081/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/calibre:/config:rw"
+      - "/srv/media/downloads/books:/downloads:rw"
+      - "/srv/media/libraries/books:/books:rw"
+
+
+networks:
+  archon:
+    external: true
