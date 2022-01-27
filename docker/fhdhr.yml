@@ -3,8 +3,8 @@ services:
   fhdhr:
     container_name: fhdhr
     environment:
-      - EPG_PLUGINS=tvtv,zap2it
-      - ORIGIN_PLUGINS=IPTVorg,NewsOn,plutotv,STIRR,ToonamiAftermath,USTVGO,XUMO
+      - EPG_PLUGINS=${EPG_PLUGINS}
+      - ORIGIN_PLUGINS=${ORIGIN_PLUGINS}
       - INTERFACE_PLUGINS=hdhr
       - PGID=1000
       - PUID=1000
