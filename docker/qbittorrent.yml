@@ -14,4 +14,4 @@ services:
       - "/home/archon/qbittorrent:/config"
       - "/srv/media/downloads:/downloads"
 
-# username/password is admin/adminadmin
+# default username/password is admin/adminadmin
