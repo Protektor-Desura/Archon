@@ -4,7 +4,7 @@ services:
     container_name: podgrab
     environment:
       - CHECK_FREQUENCY=120
-      - PASSWORD=password     # username: podgrab
+      - PASSWORD=${PODGRAB_PASSWORD}  # username: podgrab
       - PGID=1000
       - PUID=1000
       - TZ=America/Chicago
