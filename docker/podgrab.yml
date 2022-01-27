@@ -17,9 +17,8 @@ services:
     restart: unless-stopped
     user: "1000:1000"
     volumes:
-      - "/home/archon/podgrab:/config:rw"
-      - "/srv/media/libraries/podcasts:/assets:rw"
-
+      - "/home/archon/podgrab:/config"
+      - "/srv/media/libraries/podcasts:/assets"
 
 networks:
   archon:
