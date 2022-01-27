@@ -23,7 +23,6 @@ services:
       - "/srv/media/downloads/arm-media/music:/home/arm/Music"
       - "/srv/media/downloads/arm-media:/home/arm/media"
 
-
 networks:
   archon:
     external: true
