@@ -14,18 +14,18 @@ services:
       - NAME_SERVERS=1.1.1.1,1.0.0.1,37.235.1.174,37.235.1.177,84.200.69.80,84.200.70.40,209.222.18.218,209.222.18.222
       - PGID=1000
       - PUID=1000
-      - SOCKS_PASS=socks
-      - SOCKS_USER=admin
+      - SOCKS_PASS=${SOCKS_PASS}
+      - SOCKS_USER=${SOCKS_USER}
       - STRICT_PORT_FORWARD=no
       - TZ=America/Chicago
       - UMASK=002
-      - VPN_CLIENT=<openvpn|watchguard>
+      - VPN_CLIENT=${VPN_CLIENT}
       - VPN_ENABLED=yes
-      - VPN_INPUT_PORTS=1234
-      - VPN_OUTPUT_PORTS=5678
-      - VPN_PASS=<password>
+      - VPN_INPUT_PORTS=${VPN_INPUT_PORTS}
+      - VPN_OUTPUT_PORTS=${VPN_OUTPUT_PORTS}
+      - VPN_PASS=${VPN_PASS}
       - VPN_PROV=custom
-      - VPN_USER=<user>
+      - VPN_USER=${VPN_USER}
     hostname: qbittorrent
     image: "binhex/arch-privoxyvpn:latest"
     network_mode: bridge
