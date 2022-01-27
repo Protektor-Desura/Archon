@@ -25,7 +25,6 @@ services:
       - "/home/archon/nginx-proxy-manager/:/data"
       - "/home/archon/nginx-proxy-manager/letsencrypt:/etc/letsencrypt"
 
-
   mariadb:
     container_name: mariadb
     environment:
@@ -46,7 +45,6 @@ services:
     restart: unless-stopped
     volumes:
       - /home/archon/mariadb:/config
-
 
 networks:
   archon:
