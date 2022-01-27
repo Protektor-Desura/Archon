@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  embystat:
+    container_name: embystat
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: embystat
+    image: "ghcr.io/linuxserver/embystat:latest"
+    networks:
+      - archon
+    ports:
+      - "6555:6555/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/embystat:/config"
+
+
+networks:
+  archon:
+    external: true
