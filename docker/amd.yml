@@ -3,7 +3,7 @@ services:
   amd:
     container_name: amd
     environment:
-      - ARL_TOKEN=xxxxxxxxx
+      - ARL_TOKEN=<token>
       - AUTOSTART=true
       - BITRATE=128
       - Concurrency=1
@@ -15,7 +15,7 @@ services:
       - FORCECONVERT=false
       - FORMAT=OPUS
       - LidarrUrl=http://lidarr:8686
-      - LidarrAPIkey=xxxxxx
+      - LidarrAPIkey=<key>
       - LIST=both
       - MatchDistance=10
       - MBRAINZMIRROR=https://musicbrainz.org
