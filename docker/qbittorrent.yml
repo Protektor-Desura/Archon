@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+      - WEBUI_PORT=9191
+    image: "ghcr.io/linuxserver/qbittorrent:20.04.1"
+    network_mode: "container:vpn"
+    restart: unless-stopped
+    volumes:
+      - /home/archon/qbittorrent:/config
+      - /srv/media/downloads:/downloads
