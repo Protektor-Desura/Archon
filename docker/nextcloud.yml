@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  nextcloud:
+    container_name: nextcloud
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    image: "ghcr.io/linuxserver/nextcloud:latest"
+    networks:
+      - archon
+    ports:
+      - "443:443/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/nextcloud:/config:rw"
+      - "/home/archon/nextcloud/data:/data:rw"
+
+
+networks:
+  archon:
+    external: true
