@@ -13,9 +13,8 @@ services:
       - "443:443/tcp"
     restart: unless-stopped
     volumes:
-      - "/home/archon/nextcloud:/config:rw"
-      - "/home/archon/nextcloud/data:/data:rw"
-
+      - "/home/archon/nextcloud:/config"
+      - "/home/archon/nextcloud/data:/data"
 
 networks:
   archon:
