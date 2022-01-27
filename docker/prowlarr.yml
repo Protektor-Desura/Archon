@@ -16,7 +16,6 @@ services:
     volumes:
       - "/home/archon/prowlarr:/config"
 
-
   flaresolverr:
     container_name: flaresolverr
     depends_on:
@@ -33,7 +32,6 @@ services:
     ports:
       - "8191:8191"
     restart: unless-stopped 
-
 
 networks:
   archon:
