@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  grocy:
+    container_name: grocy
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: grocy
+    image: "ghcr.io/linuxserver/grocy:latest"
+    networks:
+      - archon
+    ports:
+      - "9283:80/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/grocy:/config"
+
+
+networks:
+  archon:
+    external: true
