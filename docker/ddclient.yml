@@ -14,7 +14,6 @@ services:
     volumes:
       - "/home/archon/ddclient:/config:rw"
 
-
 networks:
   archon:
     external: true
