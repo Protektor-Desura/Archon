@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+  fhdhr:
+    container_name: fhdhr
+    environment:
+      - EPG_PLUGINS=tvtv,zap2it
+      - ORIGIN_PLUGINS=IPTVorg,NewsOn,plutotv,STIRR,ToonamiAftermath,USTVGO,XUMO
+      - INTERFACE_PLUGINS=hdhr
+      - PGID=1000
+      - PUID=1000
+      - STEAM_PLUGINS=ffmpeg
+      - TZ=America/Chicago
+    hostname: fhdhr
+    image: "randomninjaatk/fhdhr:latest"
+    networks:
+      - archon
+    ports:
+      - "5004:5004/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/fhdhr:/config"
+
+
+networks:
+  archon:
+    external: true
