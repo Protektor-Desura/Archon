@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  beets:
+    container_name: beets
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=America/Chicago
+    hostname: beets
+    image: "ghcr.io/linuxserver/beets:latest"
+    networks:
+      - archon    
+    ports:
+      - "8337:8337/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/docker/beets:/config"
+      - "/srv/media/downloads:/downloads"
+      - "/srv/media/libraries/music:/music"
+    
+    
+networks:
+  archon:
+    external: true
