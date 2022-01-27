@@ -31,7 +31,6 @@ services:
       - "/home/archon/amvd:/config"
       - "/srv/media/libraries/music-videos:/downloads-amvd"
 
-
 networks:
   archon:
     external: true
