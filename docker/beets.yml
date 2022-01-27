@@ -17,7 +17,7 @@ services:
       - "/home/archon/beets:/config"
       - "/srv/media/downloads:/downloads"
       - "/srv/media/libraries/music:/music"
-       
+
 networks:
   archon:
     external: true
