@@ -33,7 +33,7 @@ services:
       - archon
     restart: unless-stopped
     volumes:
-      - "/home/docker/amd:/config"
+      - "/home/archon/amd:/config"
       - "/srv/media/downloads:/downloads-amd"
 networks:
   archon:
