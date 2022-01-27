@@ -7,7 +7,7 @@ services:
       - CountryCode=us
       - FilePermissions=644
       - FolderPermissions=755
-      - LidarrAPIkey=*****
+      - LidarrAPIkey=${LIDDAR_APIKEY}
       - LidarrUrl=http://lidarr:8686
       - MBRAINZMIRROR=https://musicbrainz.org
       - MBRATELIMIT=1
