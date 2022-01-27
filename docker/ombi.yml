@@ -14,8 +14,7 @@ services:
       - "3579:3579/tcp"
     restart: unless-stopped
     volumes:
-      - "/home/docker/ombi:/config:rw"
-
+      - "/home/docker/ombi:/config"
 
 networks:
   archon:
