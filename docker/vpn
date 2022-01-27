@@ -1,0 +1,42 @@
+version: '3.3'
+services:
+  vpn:
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    container_name: vpn
+    environment:
+      - ADDITIONAL_PORTS=9191
+      - DEBUG=false
+      - ENABLE_PRIVOXY=yes
+      - ENABLE_SOCKS=yes
+      - LAN_NETWORK=192.168.50.0/24
+      - NAME_SERVERS=1.1.1.1,1.0.0.1,37.235.1.174,37.235.1.177,84.200.69.80,84.200.70.40,209.222.18.218,209.222.18.222
+      - PGID=1000
+      - PUID=1000
+      - SOCKS_PASS=socks
+      - SOCKS_USER=admin
+      - STRICT_PORT_FORWARD=no
+      - TZ=America/Chicago
+      - UMASK=002
+      - VPN_CLIENT=<openvpn|watchguard>
+      - VPN_ENABLED=yes
+      - VPN_INPUT_PORTS=1234
+      - VPN_OUTPUT_PORTS=5678
+      - VPN_PASS=<password>
+      - VPN_PROV=custom
+      - VPN_USER=<user>
+    hostname: qbittorrent
+    image: "binhex/arch-privoxyvpn:latest"
+    network_mode: bridge
+    ports:
+      - "6881:6881/tcp" # qBittorrent port
+      - "6881:6881/udp" # qBittorrent port
+      - "8118:8118/tcp" # VPN
+      - "9118:9118/tcp" # VPN
+      - "9191:9191/tcp" # qBittorrent WebUI
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - "/home/docker/vpn:/config"
+      - "/etc/localtime:/etc/localtime:ro"
