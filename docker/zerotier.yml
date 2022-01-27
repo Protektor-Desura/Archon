@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  zerotier:
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_MODULE
+    container_name: zerotier
+    devices:
+      - /dev/net/tun
+    environment:
+      - TZ=America/Chicago
+      - ZEROTIER_API_SECRET=${ZEROTIER_API_SECRET}
+      - ZEROTIER_IDENTITY_PUBLIC=${ZEROTIER_IDENTITY_PUBLIC}
+      - ZEROTIER_IDENTITY_SECRET=${ZEROTIER_IDENTITY_SECRET}
+    hostname: zerotier
+    image: "zerotier/zerotier:latest"
+    networks:
+      - archon    
+    restart: always
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+
+networks:
+  archon:
+    external: true
