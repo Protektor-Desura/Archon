@@ -8,8 +8,8 @@ services:
       # These are the settings to access your db
       - DB_MYSQL_HOST="mariadb"
       - DB_MYSQL_PORT=3306
-      - DB_MYSQL_USER="npm"
-      - DB_MYSQL_PASSWORD="npm"
+      - DB_MYSQL_USER=${MYSQL_USER}
+      - DB_MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - DB_MYSQL_NAME="npm"
       - TZ=America/Chicago
     hostname: nginx-proxy-manager
@@ -30,9 +30,9 @@ services:
     environment:
 #      - REMOTE_SQL=http://URL1/your.sql,https://URL2/your.sql #optional
       - MYSQL_DATABASE=npm #optional
-      - MYSQL_USER=npm #optional
-      - MYSQL_PASSWORD=npm #optional
-      - MYSQL_ROOT_PASSWORD=Synners
+      - MYSQL_USER=${MYSQL_USER} #optional
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD} #optional
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - PUID=1000
       - PGID=1000
       - TZ=America/Chicago
