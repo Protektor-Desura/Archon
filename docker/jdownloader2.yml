@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  jdownloader2:
+    container_name: jdownloader2
+    hostname: jdownloader2
+    environment:
+      - CLEAN_TMP_DIR=1
+      - GROUP_ID=1000
+      - KEEP_APP_RUNNING=1
+      - TZ=America/Chicago
+      - UMASK=002
+      - USER_ID=1000
+    image: "jlesage/jdownloader-2:latest"
+    ports:
+      - "3129:3129/tcp"
+      - "5800:5800/tcp"
+    networks:
+      - archon
+    restart: unless-stopped
+    volumes:
+      - "/home/archone/jdownloader2:/config"
+      - "/srv/media/downloads:/output"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+
+
+networks:
+  archon:
+    external: true
