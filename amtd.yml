@@ -1,0 +1,35 @@
+version: "3.3"
+services:
+  amtd:
+    container_name: amtd
+    environment:
+      - AUTOSTART=true
+      - EndClient=jellyfin
+      - extrastype=all
+      - FilePermissions=644
+      - FolderPermissions=755
+      - LANGUAGES=en
+      - PREFER_EXISTING=false
+      - PUID=1000
+      - PGID=1000
+      - RadarrAPIkey=*****
+      - RadarrUrl=http://radarr:7878
+      - SCRIPTINTERVAL=1h
+      - SINGLETRAILER=false
+      - subtitlelanguage=en
+      - TZ=America/Chicago
+      - USEFOLDERS=true
+      - videoformat="--format bestvideo[vcodec*=vp9]+bestaudio[acodec=opus]"
+    hostname: amtd
+    image: "randomninjaatk/amtd:latest"
+    networks:
+      - archon
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/amtd:/config"
+      - "/srv/media/libraries:/libraries"
+
+
+networks:
+  archon:
+    external: true
