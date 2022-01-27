@@ -20,7 +20,6 @@ services:
     volumes:
       - "/home/archon/fhdhr:/config"
 
-
 networks:
   archon:
     external: true
