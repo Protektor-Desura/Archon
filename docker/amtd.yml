@@ -12,7 +12,7 @@ services:
       - PREFER_EXISTING=false
       - PUID=1000
       - PGID=1000
-      - RadarrAPIkey=<key>
+      - RadarrAPIkey=${RADARR_APIKEY}
       - RadarrUrl=http://radarr:7878
       - SCRIPTINTERVAL=1h
       - SINGLETRAILER=false
