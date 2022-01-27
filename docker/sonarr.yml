@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  sonarr:
+    container_name: sonarr
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - SMA_UPDATE=true
+      - TZ=America/Chicago
+    hostname: sonarr
+    image: "randomninjaatk/sonarr-sma:latest"
+    networks:
+      - archon
+    ports:
+      - "8989:8989/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/sonarr:/config"
+      - "/srv/media/libraries:/libraries"
+      - "/srv/media/downloads:/downloads"
+
+networks:
+  archon:
+    external: true
