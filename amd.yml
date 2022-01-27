@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+  amd:
+    container_name: amd
+    environment:
+      - ARL_TOKEN=xxxxxxxxx
+      - AUTOSTART=true
+      - BITRATE=128
+      - Concurrency=1
+      - DOWNLOADMODE=wanted
+      - EMBEDDED_COVER_QUALITY=80
+      - ENABLEPOSTPROCESSING=true
+      - FilePermissions=644
+      - FolderPermissions=775
+      - FORCECONVERT=false
+      - FORMAT=OPUS
+      - LidarrUrl=http://lidarr:8686
+      - LidarrAPIkey=xxxxxx
+      - LIST=both
+      - MatchDistance=10
+      - MBRAINZMIRROR=https://musicbrainz.org
+      - MBRATELIMIT=1
+      - PGID=1000
+      - PUID=1000
+      - POSTPROCESSTHREADS=1
+      - replaygain=true
+      - requirequality=false
+      - SCRIPTINTERVAL=1h
+      - TZ=America/Chicago
+    hostname: amd
+    image: "randomninjaatk/amd:latest"
+    networks:
+      - archon
+    restart: unless-stopped
+    volumes:
+      - "/home/docker/amd:/config"
+      - "/srv/media/downloads:/downloads-amd"
+networks:
+  archon:
+    external: true
