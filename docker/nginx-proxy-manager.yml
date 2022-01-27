@@ -1,0 +1,53 @@
+version: "3.3"
+services:
+  nginx-proxy-manager:
+    container_name: nginx-proxy-manager
+    depends_on:
+      - mariadb
+    environment:
+      # These are the settings to access your db
+      - DB_MYSQL_HOST="mariadb"
+      - DB_MYSQL_PORT=3306
+      - DB_MYSQL_USER="npm"
+      - DB_MYSQL_PASSWORD="npm"
+      - DB_MYSQL_NAME="npm"
+      - TZ=America/Chicago
+    hostname: nginx-proxy-manager
+    image: "jc21/nginx-proxy-manager:latest"
+    networks:
+      - archon
+    ports:
+      - "80:80"      # Public HTTP Port
+      - "81:81"      # Admin Web Port
+      - "443:443"    # Public HTTPS Port
+    restart: unless-stopped
+    volumes:
+      - "/home/archon/nginx-proxy-manager/:/data"
+      - "/home/archon/nginx-proxy-manager/letsencrypt:/etc/letsencrypt"
+
+
+  mariadb:
+    container_name: mariadb
+    environment:
+#      - REMOTE_SQL=http://URL1/your.sql,https://URL2/your.sql #optional
+      - MYSQL_DATABASE=npm #optional
+      - MYSQL_USER=npm #optional
+      - MYSQL_PASSWORD=npm #optional
+      - MYSQL_ROOT_PASSWORD=Synners
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    hostname: mariadb
+    image: "ghcr.io/linuxserver/mariadb:latest"
+    networks:
+      - archon
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    volumes:
+      - /home/archon/mariadb:/config
+
+
+networks:
+  archon:
+    external: true
