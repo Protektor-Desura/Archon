@@ -3,16 +3,16 @@ services:
   portainer:
     container_name: portainer
     hostname: portainer
-    image: 'cr.portainer.io/portainer/portainer-ce:2.9.3'
+    image: "cr.portainer.io/portainer/portainer-ce:2.9.3"
     networks:
       - archon
-    restart: always
     ports:
-      - '8000:8000'
-      - '9443:9443'
+      - "8000:8000"
+      - "9443:9443"
+    restart: always
     volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
-      - '/home/archon/portainer:/data'
+      - "/home/archon/portainer:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
 
 networks:
   archon:
