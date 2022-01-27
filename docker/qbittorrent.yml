@@ -11,5 +11,5 @@ services:
     network_mode: "container:vpn"
     restart: unless-stopped
     volumes:
-      - /home/archon/qbittorrent:/config
-      - /srv/media/downloads:/downloads
+      - "/home/archon/qbittorrent:/config"
+      - "/srv/media/downloads:/downloads"
