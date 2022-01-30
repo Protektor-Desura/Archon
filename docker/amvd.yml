@@ -17,7 +17,7 @@ services:
       - SCRIPTINTERVAL=1h
       - SOURCE_CONNECTION=lidarr
       - subtitlelanguage=en
-      - TZ=America/Chicago
+      - TZ=${TZ}
       - USEFOLDERS=true
       - USEVIDEOFOLDERS=true
       - videofilter=live
@@ -28,8 +28,8 @@ services:
       - archon
     restart: unless-stopped
     volumes:
-      - "/home/archon/amvd:/config"
-      - "/srv/media/libraries/music-videos:/downloads-amvd"
+      - "${DOCKER_CONFIG_PATH}:/config"
+      - "${DOWNLOAD_PATH_MUSIC}:/downloads-amvd"
 
 networks:
   archon:
