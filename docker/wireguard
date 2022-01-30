@@ -1,0 +1,35 @@
+version: '3.3'
+services:
+  wireguard:
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    container_name: wireguard
+    environment:
+      - ALLOWEDIPS=0.0.0.0/0
+      - INTERNAL_SUBNET=10.13.13.0
+      - PEERS=1
+      - PEERDNS=auto
+      - PGID=1000
+      - PUID=1000
+      - SERVERURL=wireguard.domain.com
+      - SERVERPORT=51820
+      - TZ=America/Chicago
+    hostname: wireguard
+    image: "ghcr.io/linuxserver/wireguard:latest"
+    networks:
+      - archon    
+    ports:
+      - "51820:51820/tcp"
+      - "51820:51820/udp"
+    restart: unless-stopped
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - "/home/archon/wireguard:/config"
+      - "/lib/modules:/lib/modules"
+
+
+networks:
+  archon:
+    external: true
