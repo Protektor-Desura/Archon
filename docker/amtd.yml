@@ -17,7 +17,7 @@ services:
       - SCRIPTINTERVAL=1h
       - SINGLETRAILER=false
       - subtitlelanguage=en
-      - TZ=America/Chicago
+      - TZ=${TZ}
       - USEFOLDERS=true
       - videoformat="--format bestvideo[vcodec*=vp9]+bestaudio[acodec=opus]"
     hostname: amtd
