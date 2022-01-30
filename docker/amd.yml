@@ -33,8 +33,8 @@ services:
       - archon
     restart: unless-stopped
     volumes:
-      - "/home/archon/amd:/config"
-      - "/srv/media/downloads:/downloads-amd"
+      - "${DOCKER_CONFIG_PATH_AMD}:/config"
+      - "${DOWNLOAD_PATH}:/downloads-amd"
 
 networks:
   archon:
