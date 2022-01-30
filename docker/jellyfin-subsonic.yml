@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   jellyfin_subsonic:
-    container_name: jellyfin_subsonic
+    container_name: jellyfin-subsonic
     environment:
       - JELLYSUB_UPSTREAM_URL=http://jellyfin:8096
       - PGID=1000
