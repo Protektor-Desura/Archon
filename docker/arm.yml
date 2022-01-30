@@ -7,7 +7,7 @@ services:
     environment:
       - GID=1000
       - UID=1000
-      - TZ=America/Chicago
+      - TZ=${TZ}
     hostname: arm-ripper
     image: "1337server/automatic-ripping-machine:latest"
     ports:
@@ -17,11 +17,11 @@ services:
     networks:
       - archon
     volumes:
-      - "/home/archon/arm:/home/arm"
-      - "/home/archon/arm/logs:/home/arm/logs"
-      - "/home/archon/arm/config:/home/arm/config"
-      - "/srv/media/downloads/arm-media/music:/home/arm/Music"
-      - "/srv/media/downloads/arm-media:/home/arm/media"
+      - "${DOCKER_CONFIG_PATH_AMD}:/home/arm"
+      - "${DOCKER_CONFIG_PATH_AMD}/config:/home/arm/config"
+      - "${DOCKER_CONFIG_PATH_AMD}/logs:/home/arm/logs"
+      - "{DOWNLOAD_PATH_ARM-MEDIA}:/home/arm/media"
+      - "{DOWNLOAD_PATH_ARM-MEDIA}/music:/home/arm/Music"
 
 networks:
   archon:
