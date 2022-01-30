@@ -8,4 +8,5 @@ Archon is a Greek word that means "ruler". This will help you take control of yo
 Please read the <a href="https://github.com/Protektor-Desura/Archon/wiki">Wiki</a> for more documentation on setting up the server.
 
 
- <a href="https://discord.gg/xTpfs9WgEd"><img alt="Discord" src="https://discord.com/assets/3437c10597c1526c3dbd98c737c2bcae.svg" width="30" height="30">
+<hr>
+<a href="https://discord.gg/xTpfs9WgEd"><img alt="Discord" src="https://discord.com/assets/3437c10597c1526c3dbd98c737c2bcae.svg" width="30" height="30">
