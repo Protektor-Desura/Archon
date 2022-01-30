@@ -5,7 +5,7 @@ services:
     environment:
       - PGID=1000
       - PUID=1000
-      - TZ=America/Chicago
+      - TZ=${TZ}
     hostname: bazarr
     image: "sekkr1/bazarr-subsync:latest"
     networks:
@@ -14,9 +14,9 @@ services:
       - "6767:6767/tcp"
     restart: unless-stopped
     volumes:
-      - "/home/archon/bazarr:/config"
-      - "/srv/media/libraries:/libraries"
-
+      - "${DOCKER_CONFIG_PATH_BAZARR}:/config"
+      - "${DOWNLOAD_PATH_TV}:/libraries/tv"
+      - "${DOWNLOAD_PATH_MOVIES}:/libraries/movies"
 networks:
   archon:
     external: true
