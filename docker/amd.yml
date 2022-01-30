@@ -26,7 +26,7 @@ services:
       - replaygain=true
       - requirequality=false
       - SCRIPTINTERVAL=1h
-      - TZ=America/Chicago
+      - TZ=${TZ}
     hostname: amd
     image: "randomninjaatk/amd:latest"
     networks:
