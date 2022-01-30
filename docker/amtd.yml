@@ -26,8 +26,8 @@ services:
       - archon
     restart: unless-stopped
     volumes:
-      - "/home/archon/amtd:/config"
-      - "/srv/media/libraries:/libraries"
+      - "${DOCKER_CONFIG_PATH_AMTD}:/config"
+      - "${LIBRARY_PATH_MOVIES}:/libraries"
 
 networks:
   archon:
